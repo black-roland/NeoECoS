@@ -1,0 +1,48 @@
+﻿<Window x:Class="NeoECoSTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NeoECoSTest"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+	<Window.Resources>
+		<local:CsStateConverter x:Key="stateConverter" />
+	</Window.Resources>
+	<Grid>
+		<Grid.ColumnDefinitions>
+			
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="40" />
+		</Grid.RowDefinitions>
+
+		<ListBox ItemsSource="{Binding Engines}" Margin="8">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="40" />
+							<ColumnDefinition Width="140" />
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="40" />
+							<ColumnDefinition Width="40" />
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Grid.Column="0" Text="{Binding Id,Mode=OneWay}" />
+						<TextBlock Grid.Column="1" Text="{Binding Name,Mode=OneWay}" />
+						<Slider Grid.Column="2" Value="{Binding Speed}" Width="200" Minimum="0" Maximum="255" />
+						<CheckBox Grid.Column="3" Content="F1" IsChecked="{Binding Func1}" />
+						<CheckBox Grid.Column="4" Content="F2" IsChecked="{Binding Func2}" />
+					</Grid>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+
+		<StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="8">
+			<CheckBox Content="Global State" Width="100" IsChecked="{Binding State, Converter={StaticResource stateConverter}}" />
+			<Button Content="Close" Width="100" Click="cmdClose_Clicked" />
+		</StackPanel>
+	</Grid>
+</Window>
