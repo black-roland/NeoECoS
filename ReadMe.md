@@ -16,7 +16,7 @@ It is tested and compatible to the [PIKO SmartControl](http://www.piko-shop.de/i
 * Control of switch article
 
 ## None features
-* I only do not ident to implement the parts where you can create new items.
+* I do not ident to implement the parts where you can create new items.
 
 # License
 
